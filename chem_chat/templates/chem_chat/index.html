@@ -1,13 +1,32 @@
+{% load static %}
 <!DOCTYPE html>
-<head></head>
+<head> 
+</head>
 <body>
     <header>
         <h1>ChemWEB_Service</h1>
     </header>
     <h1>ChemChat</h1>
-    <form action="./chem_chat" method="post">
-        {% csrf_token %}
-        {{ form }}
-        <input type="submit" value="Submit">
+    <form name="chem_chat" action="./chem_chat" method="post">
+        <!-- {% csrf_token %} -->
+        {{ smiles_input_form }}
+        <button id="s_button" name="f_type" value="send">送信</button>
     </form>
+    <div id="visualized_chem">
+    <script src="{% static 'chem_chat/ajax.js' %}">
+    var request_params = {
+        result: documet.getElementById("visualized_chem"),
+        url: "chem_chat",
+    }
+    let button = document.getElementById("s_button");
+    button.addEventListener(
+        "click", 
+        function() {
+            smiles_request(
+                request_params, 
+                document.chem_chat.input_smiles.value);
+        },
+        false
+    );
+    </script>
 </body>
