@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<head></head>
+<body>
+    <header>
+        <h1>ChemWEB_Service</h1>
+    </header>
+    <h1>ChemChat</h1>
+    <form action="./chem_chat" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Submit">
+    </form>
+</body>
